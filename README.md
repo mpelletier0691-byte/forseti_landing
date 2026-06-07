@@ -1,62 +1,37 @@
-# Forseti landing page (GitHub Pages)
+# Forseti landing (GitHub Pages)
 
-Static one-page site for **Forseti** by Asvaettir Labs. Copy matches the in-app voice (motto, brand copy, tagline). Contact: **asvaettirlabs.dev@gmail.com**.
+Public site: **https://mpelletier0691-byte.github.io/forseti_landing/**
 
-## Before you publish
+Static site for **Forseti** by Asvaettir Labs (Michael David Pelletier).  
+Contact: **asvaettirlabs.dev@gmail.com**
 
-1. **Play Store button** — In `index.html`, the primary button points at  
-   `https://play.google.com/store/apps/details?id=com.forseti`  
-   That works after the app is **public on Production**. Until then, replace `href` with your **closed-test** or **internal-test** opt-in URL from Play Console.
+## Pages
 
-2. **Privacy links** — Footer links use your public gist and GitHub repo. Update if those URLs change.
+| File | URL |
+|------|-----|
+| `index.html` | Home + Official links hub |
+| `privacy-policy.html` | Privacy Policy (Play Console) |
+| `terms-of-use.html` | Terms of Use |
+| `styles.css` | Shared Forseti theme |
 
-## Create the GitHub repo
-
-1. On GitHub (logged in as **mpelletier0691-byte**): **New repository**.
-2. Name suggestions:
-   - **`forseti`** → site URL: `https://mpelletier0691-byte.github.io/forseti/`
-   - or **`forseti-landing`** → `https://mpelletier0691-byte.github.io/forseti-landing/`
-3. Public, add a README (optional), **Create repository**.
-
-## Upload these files
-
-From your machine (adjust repo name if not `forseti`):
+## Update from main Forseti repo
 
 ```bash
-cd /path/to/Forseti/landing
-git init
-git add index.html styles.css README.md
-git commit -m "Add Forseti landing page"
-git branch -M main
-git remote add origin https://github.com/mpelletier0691-byte/forseti.git
-git push -u origin main
+FORSETI_LANDING_REPO=~/Desktop/Projects/forseti_landing \
+  ~/Desktop/Projects/Forseti/scripts/sync_landing_site.sh
+
+cd ~/Desktop/Projects/forseti_landing
+git add -A
+git commit -m "Sync Forseti landing: Play, privacy, terms, legal disclaimers."
+git push origin main
 ```
 
-Or use the GitHub web UI: **Add file → Upload files** and drag `index.html` and `styles.css` into the repo root.
+## Play Store button
 
-## Turn on GitHub Pages
+Primary CTA uses the public listing:
 
-1. Repo → **Settings → Pages**.
-2. **Build and deployment**: Source = **Deploy from a branch**.
-3. Branch = **main**, folder = **/ (root)**.
-4. Save. After ~1–2 minutes the site is live at:
+`https://play.google.com/store/apps/details?id=com.forseti`
 
-   `https://mpelletier0691-byte.github.io/<repo-name>/`
+## GitHub Pages
 
-5. Put that URL in Play Console (**Store settings** / **Main store listing** → Website), BetaList, email signature, etc.
-
-## Optional: custom domain
-
-Buy a domain (e.g. at Porkbun, Namecheap), then in **Pages** add the custom hostname and follow GitHub’s DNS instructions. You can keep the `github.io` URL as a redirect target later.
-
-## Optional: form instead of mailto
-
-To collect emails without a backend, sign up at [Formspree](https://formspree.io) (free tier), create a form, and replace the “Email us” button with a small `<form action="https://formspree.io/f/xxxxx" method="POST">` block (see Formspree docs). Keep the mailto as fallback if you prefer zero setup.
-
-## Files
-
-| File        | Role                          |
-|------------|-------------------------------|
-| `index.html` | Single-page content + CTAs |
-| `styles.css` | Forseti-themed layout       |
-| `README.md`  | This deploy guide            |
+Repo **Settings → Pages** → branch **main**, folder **/ (root)**.
